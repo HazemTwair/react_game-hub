@@ -1,10 +1,14 @@
 import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
 
-const GameCardSkeletorn = () => {
+interface Props {
+  minHeight: string;
+}
+
+const GameCardSkeletorn = ({ minHeight }: Props) => {
   return (
-    <Card width="280px" borderRadius={10} overflow="hidden">
+    <Card>
       <Skeleton height="200px" />
-      <CardBody>
+      <CardBody minHeight={minHeight}>
         <SkeletonText />
       </CardBody>
     </Card>
