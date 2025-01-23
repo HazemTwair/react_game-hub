@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Container, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -8,6 +8,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import Copyright from "./components/Copyright";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -22,8 +23,8 @@ const App = () => {
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
+        base: `"nav" "main" "footer"`,
+        lg: `"nav nav" "aside main" "footer footer"`,
       }}
       templateColumns={{
         base: "1fr",
@@ -64,6 +65,11 @@ const App = () => {
           </Flex>
         </Box>
         <GameGrid gameQuery={gameQuery} />
+      </GridItem>
+      <GridItem area="footer" bgColor="gray.700" marginTop={3}>
+        <Container as="footer" minW="100%">
+          <Copyright />
+        </Container>
       </GridItem>
     </Grid>
   );
